@@ -12,7 +12,7 @@ platform itself is not built yet. It will grow out of the Omega Dental website a
 | Path | What |
 |---|---|
 | `index.html` | One-page site, Bangla first with an English toggle. No build step and no third-party scripts. |
-| `img/` | Screenshots of omegadentalbd.com. The dashboard image shows invented sample records only. |
+| `img/` | Screenshots of omegadentalbd.com, shown with the clinic owner's consent (given 2026-11-09). The dashboard image shows invented sample records only. |
 | `fonts/` | Noto Sans Bengali, Sora, Inter (SIL Open Font License), self-hosted. |
 
 ## Publish with GitHub Pages
