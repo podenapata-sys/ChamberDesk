@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="bn" data-lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ChamberDesk — ডেন্টাল ক্লিনিকের ওয়েবসাইট, বুকিং ও রোগীর হিসাব</title>
+<meta name="description" content="ডেন্টাল ক্লিনিকের জন্য ওয়েবসাইট, অনলাইন বুকিং আর রোগীর হিসাব — এক জায়গায়, মাসিক অল্প খরচে। প্রথম ৫টি ক্লিনিক নিচ্ছি।">
+<meta property="og:title" content="ChamberDesk — আপনার ক্লিনিকের ওয়েবসাইট, বুকিং আর হিসাব এক জায়গায়">
+<meta property="og:description" content="ডেন্টাল ক্লিনিকের জন্য। মাসিক অল্প খরচে, ১–২ দিনে চালু। প্রথম ৫টি ক্লিনিক ৩ মাস অর্ধেক দামে।">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B1F3A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230F5FD7'/%3E%3Cpath d='M9 10h14v3H9zM9 15h9v3H9zM9 20h12v3H9z' fill='%23fff'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Noto Sans Bengali";src:url(fonts/noto-bengali.woff2) format("woff2");font-weight:400 800;font-display:swap}
+@font-face{font-family:"Sora";src:url(fonts/sora.woff2) format("woff2");font-weight:600 800;font-display:swap}
+@font-face{font-family:"Inter";src:url(fonts/inter.woff2) format("woff2");font-weight:400 700;font-display:swap}
+:root{
+  --ink:#0B1F3A;--text:#22364F;--muted:#5D7089;--line:#E3E9F1;--bg:#F6F8FB;--card:#fff;
+  --brand:#0F5FD7;--brand-d:#0B4AA8;--mint:#14B8A6;--mint-l:#E6F7F5;--amber:#F59E0B;--amber-l:#FFF6E5;
+  --r:22px;--shadow:0 24px 60px -32px rgba(11,31,58,.35);
+  --fb:"Noto Sans Bengali","Inter",system-ui,sans-serif;--fh:"Sora","Noto Sans Bengali",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--fb);color:var(--text);background:var(--bg);line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+html[data-lang="en"] body{font-family:"Inter","Noto Sans Bengali",system-ui,sans-serif}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1140px;margin:0 auto;padding:0 20px}
+h1,h2,h3{color:var(--ink);line-height:1.25;font-weight:800}
+html[data-lang="en"] h1,html[data-lang="en"] h2,html[data-lang="en"] h3{font-family:var(--fh)}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font:700 13px/1 var(--fh);letter-spacing:.08em;text-transform:uppercase;color:var(--brand);background:#E8F0FD;padding:8px 14px;border-radius:999px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 24px;border-radius:14px;font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn:focus-visible{outline:3px solid var(--mint);outline-offset:3px}
+.btn-p{background:var(--brand);color:#fff;box-shadow:0 12px 24px -12px rgba(15,95,215,.7)}
+.btn-g{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+.btn svg{width:20px;height:20px;flex:none}
+
+/* header */
+.top{position:sticky;top:0;z-index:20;background:rgba(246,248,251,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:14px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 20px var(--fh);color:var(--ink)}
+.logo i{width:34px;height:34px;border-radius:10px;background:var(--brand);display:grid;place-items:center}
+.logo i svg{width:20px;height:20px}
+.sp{flex:1}
+.lang{font:700 14px var(--fh);background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;cursor:pointer;color:var(--ink)}
+.top .btn{min-height:42px;padding:0 16px;font-size:15px}
+
+/* hero */
+.hero{padding:56px 0 40px;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero h1{font-size:clamp(32px,5vw,52px);margin:18px 0 16px}
+.hero h1 em{font-style:normal;color:var(--brand)}
+.hero p.lead{font-size:clamp(17px,2vw,20px);color:var(--muted);max-width:560px}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.offer{margin-top:22px;display:inline-flex;gap:10px;align-items:flex-start;background:var(--amber-l);border:1px solid #F8D98F;color:#7A4B00;border-radius:14px;padding:12px 16px;font-size:15px;max-width:560px}
+.offer b{color:#5C3700}
+.visual{position:relative;min-height:520px}
+.visual .dash{position:absolute;right:-120px;top:40px;width:560px;border-radius:16px;box-shadow:var(--shadow);border:1px solid var(--line);background:#fff;overflow:hidden}
+.visual .dash img{opacity:.96}
+.phone{position:absolute;left:0;top:0;width:270px;border-radius:40px;padding:11px;background:#0B1F3A;box-shadow:0 40px 80px -36px rgba(11,31,58,.6)}
+.phone .scr{border-radius:30px;overflow:hidden;background:#fff;aspect-ratio:600/1077}
+.phone img{width:100%}
+.tag{position:absolute;font:700 13px var(--fh);color:var(--muted);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;box-shadow:0 8px 20px -12px rgba(11,31,58,.4)}
+
+/* sections */
+section{padding:64px 0}
+.sec-h{max-width:720px;margin-bottom:34px}
+.sec-h h2{font-size:clamp(26px,3.6vw,38px);margin:14px 0 10px}
+.sec-h p{color:var(--muted);font-size:18px}
+.pains{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pain{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.pain .ic{width:46px;height:46px;border-radius:14px;background:#FDECEA;color:#C2412D;display:grid;place-items:center;margin-bottom:14px}
+.pain .ic svg{width:24px;height:24px}
+.pain h3{font-size:19px;margin-bottom:6px}
+.pain p{color:var(--muted);font-size:15.5px}
+
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.feat{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.feat .ic{width:46px;height:46px;border-radius:14px;background:var(--mint-l);color:#0F8577;display:grid;place-items:center;margin-bottom:14px}
+.feat .ic svg{width:24px;height:24px}
+.feat h3{font-size:19px;margin-bottom:6px}
+.feat p{color:var(--muted);font-size:15.5px}
+
+.show{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.shot{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;box-shadow:var(--shadow)}
+.shot .frame{border-radius:14px;overflow:hidden;border:1px solid var(--line);aspect-ratio:600/1000}
+.shot .frame img{width:100%}
+.shot .frame.wide{aspect-ratio:1400/875}
+.shot figcaption{font-size:14.5px;color:var(--muted);margin-top:12px}
+.shot figcaption b{color:var(--ink);display:block;font-size:16px}
+.shot.span2{grid-column:span 2}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;position:relative}
+.step:before{counter-increment:s;content:counter(s);width:40px;height:40px;border-radius:12px;background:var(--brand);color:#fff;display:grid;place-items:center;font:800 18px var(--fh);margin-bottom:14px}
+.step h3{font-size:19px;margin-bottom:6px}
+.step p{color:var(--muted);font-size:15.5px}
+
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch}
+.plan{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column}
+.plan.pop{border:2px solid var(--brand);box-shadow:var(--shadow);position:relative}
+.plan.pop:after{content:attr(data-badge);position:absolute;top:-14px;left:24px;background:var(--brand);color:#fff;font:700 12.5px var(--fh);padding:5px 12px;border-radius:999px}
+.plan h3{font-size:20px}
+.price{font:800 36px var(--fh);color:var(--ink);margin:10px 0 2px}
+.price small{font:600 15px var(--fb);color:var(--muted)}
+.plan ul{list-style:none;margin:16px 0 22px;display:grid;gap:9px;font-size:15.5px}
+.plan li{display:flex;gap:10px;align-items:flex-start}
+.plan li svg{width:20px;height:20px;flex:none;color:var(--mint);margin-top:4px}
+.plan .btn{margin-top:auto}
+.note{margin-top:18px;color:var(--muted);font-size:15px}
+
+.proof{background:var(--ink);color:#C9D6E8;border-radius:28px;padding:40px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+.proof h2{color:#fff;font-size:clamp(24px,3vw,32px);margin-bottom:10px}
+.proof a.link{color:#7FE3D6;font:700 18px var(--fh);text-decoration:none;border-bottom:2px solid #2E5E8E}
+.proof ul{list-style:none;display:grid;gap:10px;margin-top:16px}
+.proof li{display:flex;gap:10px}
+.proof li svg{width:20px;height:20px;flex:none;color:#7FE3D6;margin-top:4px}
+
+.faq{max-width:820px}
+details{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:700;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font:700 22px var(--fh);color:var(--brand);line-height:1}
+details[open] summary:after{content:"–"}
+details p{color:var(--muted);margin-top:10px}
+
+.final{text-align:center;padding:72px 0}
+.final h2{font-size:clamp(28px,4vw,42px);max-width:760px;margin:0 auto 14px}
+.final p{color:var(--muted);font-size:18px;max-width:620px;margin:0 auto 26px}
+.final .cta-row{justify-content:center}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:14.5px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between}
+
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr}
+  .visual{min-height:440px;margin-top:10px}
+  .visual .dash{right:auto;left:150px;width:520px}
+  .pains,.feats,.steps,.plans{grid-template-columns:1fr 1fr}
+  .show{grid-template-columns:1fr 1fr}
+  .proof{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .top .btn span{display:none}
+  .hero{padding-top:36px}
+  .visual{min-height:400px}
+  .phone{width:220px}
+  .visual .dash{left:120px;width:420px;top:60px}
+  .pains,.feats,.steps,.plans,.show{grid-template-columns:1fr}
+  .shot.span2{grid-column:auto}
+  section{padding:48px 0}
+  .proof{padding:28px;border-radius:22px}
+  .cta-row .btn{width:100%}
+}
+/* very small phones: the header button repeats the hero's, so it gives way to the logo */
+@media (max-width:380px){.top .wa{display:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="ChamberDesk">
+      <i><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M6 7h12M6 12h8M6 17h10"/></svg></i>ChamberDesk
+    </a>
+    <span class="sp"></span>
+    <button class="lang" id="langBtn" type="button" aria-label="Switch language">EN</button>
+    <a class="btn btn-p wa" href="#" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg><span data-en="Free sample" data-bn="ফ্রি নমুনা">ফ্রি নমুনা</span></a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" data-en="For dental clinics" data-bn="ডেন্টাল ক্লিনিকের জন্য">ডেন্টাল ক্লিনিকের জন্য</span>
+      <h1 data-en="Your clinic's website, online booking and patient accounts — &lt;em&gt;in one place&lt;/em&gt;" data-bn="আপনার ক্লিনিকের ওয়েবসাইট, অনলাইন বুকিং আর রোগীর হিসাব — &lt;em&gt;এক জায়গায়&lt;/em&gt;" data-html>আপনার ক্লিনিকের ওয়েবসাইট, অনলাইন বুকিং আর রোগীর হিসাব — <em>এক জায়গায়</em></h1>
+      <p class="lead" data-en="A small monthly fee instead of a big build cost. Your own site, in your clinic's name, live in one or two days." data-bn="একসাথে বড় খরচ নয় — মাসিক অল্প ফি। আপনার ক্লিনিকের নামে নিজের সাইট, ১–২ দিনে চালু।">একসাথে বড় খরচ নয় — মাসিক অল্প ফি। আপনার ক্লিনিকের নামে নিজের সাইট, ১–২ দিনে চালু।</p>
+      <div class="cta-row">
+        <a class="btn btn-p" href="#" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg><span data-en="Get a free sample page" data-bn="ফ্রি নমুনা পেজ নিন">ফ্রি নমুনা পেজ নিন</span></a>
+        <a class="btn btn-g" href="https://omegadentalbd.com" target="_blank" rel="noopener"><span data-en="See a live clinic site" data-bn="চালু থাকা উদাহরণ দেখুন">চালু থাকা উদাহরণ দেখুন</span></a>
+      </div>
+      <div class="offer"><span aria-hidden="true">★</span><span data-en="&lt;b&gt;Taking the first 5 clinics:&lt;/b&gt; half price for the first 3 months, in return for your feedback." data-bn="&lt;b&gt;প্রথম ৫টি ক্লিনিক নিচ্ছি:&lt;/b&gt; প্রথম ৩ মাস অর্ধেক দামে — বিনিময়ে শুধু আপনার মতামত।" data-html><b>প্রথম ৫টি ক্লিনিক নিচ্ছি:</b> প্রথম ৩ মাস অর্ধেক দামে — বিনিময়ে শুধু আপনার মতামত।</span></div>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="dash"><img src="img/dashboard.jpg" alt="" width="1400" height="875" loading="eager"></div>
+      <div class="phone"><div class="scr"><img id="heroShot" src="img/site-hero-bn.jpg" alt="" width="600" height="1077"></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow" data-en="Sound familiar?" data-bn="চেনা লাগছে?">চেনা লাগছে?</span>
+      <h2 data-en="Good reviews on Google — and nowhere to send the patient" data-bn="গুগলে ভালো রিভিউ — কিন্তু রোগীকে পাঠানোর জায়গা নেই">গুগলে ভালো রিভিউ — কিন্তু রোগীকে পাঠানোর জায়গা নেই</h2>
+    </div>
+    <div class="pains">
+      <div class="pain"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+        <h3 data-en="No Website button on Maps" data-bn="ম্যাপে Website বোতাম নেই">ম্যাপে Website বোতাম নেই</h3>
+        <p data-en="A patient reads your reviews, wants to know more — and the only option is to call." data-bn="রোগী রিভিউ পড়ে আরও জানতে চান — সামনে একটাই পথ, ফোন করা।">রোগী রিভিউ পড়ে আরও জানতে চান — সামনে একটাই পথ, ফোন করা।</p></div>
+      <div class="pain"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 11h7M8.5 14h4.5"/></svg></div>
+        <h3 data-en="The same questions all day" data-bn="একই প্রশ্ন দিনে বারবার">একই প্রশ্ন দিনে বারবার</h3>
+        <p data-en="&quot;How much is a root canal?&quot; &quot;Are you open now?&quot; — by phone and message, again and again." data-bn="&quot;রুট ক্যানেল কত?&quot; &quot;এখন খোলা?&quot; — ফোনে আর মেসেজে, বারবার।">"রুট ক্যানেল কত?" "এখন খোলা?" — ফোনে আর মেসেজে, বারবার।</p></div>
+      <div class="pain"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3 data-en="Accounts in a notebook" data-bn="হিসাব খাতায়">হিসাব খাতায়</h3>
+        <p data-en="Who still owes what, who is due back next week — kept on paper, or in someone's head." data-bn="কার কত বাকি, কে আগামী সপ্তাহে আসবেন — খাতায়, নয়তো মনে রাখতে হয়।">কার কত বাকি, কে আগামী সপ্তাহে আসবেন — খাতায়, নয়তো মনে রাখতে হয়।</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="features" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow" data-en="What you get" data-bn="যা পাবেন">যা পাবেন</span>
+      <h2 data-en="Everything a clinic needs online — nothing it doesn't" data-bn="ক্লিনিকের অনলাইনে যা লাগে — তার বেশি কিছু নয়">ক্লিনিকের অনলাইনে যা লাগে — তার বেশি কিছু নয়</h2>
+    </div>
+    <div class="feats">
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.6 2.6 3.8 5.6 3.8 9s-1.2 6.4-3.8 9c-2.6-2.6-3.8-5.6-3.8-9S9.4 5.6 12 3z"/></svg></div>
+        <h3 data-en="Your own website" data-bn="নিজের ওয়েবসাইট">নিজের ওয়েবসাইট</h3>
+        <p data-en="Bangla and English, a page for every treatment, your doctors, map, call and WhatsApp buttons." data-bn="বাংলা ও ইংরেজি, প্রতিটি চিকিৎসার আলাদা পেজ, ডাক্তারের পরিচয়, ম্যাপ, কল আর WhatsApp বোতাম।">বাংলা ও ইংরেজি, প্রতিটি চিকিৎসার আলাদা পেজ, ডাক্তারের পরিচয়, ম্যাপ, কল আর WhatsApp বোতাম।</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M8 3v4M16 3v4M3.5 10h17"/><path d="m9 15 2 2 4-4"/></svg></div>
+        <h3 data-en="Online booking, even at night" data-bn="অনলাইন বুকিং — রাতেও">অনলাইন বুকিং — রাতেও</h3>
+        <p data-en="Every booking lands in your dashboard straight away, with an alert to your phone." data-bn="প্রতিটি বুকিং সাথে সাথে আপনার ড্যাশবোর্ডে — সাথে ফোনে অ্যালার্ট।">প্রতিটি বুকিং সাথে সাথে আপনার ড্যাশবোর্ডে — সাথে ফোনে অ্যালার্ট।</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9-9-9z"/><circle cx="7.5" cy="7.5" r="1.6"/></svg></div>
+        <h3 data-en="A price list patients can read" data-bn="রোগীর পড়ার মতো দামের তালিকা">রোগীর পড়ার মতো দামের তালিকা</h3>
+        <p data-en="Show as much or as little as you like. The most-asked question, answered before the call." data-bn="যতটুকু দেখাতে চান। সবচেয়ে বেশি জিজ্ঞেস করা প্রশ্নের উত্তর — ফোনের আগেই।">যতটুকু দেখাতে চান। সবচেয়ে বেশি জিজ্ঞেস করা প্রশ্নের উত্তর — ফোনের আগেই।</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3 data-en="Patient records and payments" data-bn="রোগীর রেকর্ড ও পেমেন্ট">রোগীর রেকর্ড ও পেমেন্ট</h3>
+        <p data-en="Who paid, who owes, who comes back when — with reports and an Excel download." data-bn="কে দিয়েছেন, কার বাকি, কে কবে আসবেন — রিপোর্ট আর Excel ডাউনলোডসহ।">কে দিয়েছেন, কার বাকি, কে কবে আসবেন — রিপোর্ট আর Excel ডাউনলোডসহ।</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19.5 8.5a2.8 2.8 0 0 0-4-4L4 16v4z"/><path d="m14 6 4 4"/></svg></div>
+        <h3 data-en="Change it yourself" data-bn="নিজেই বদলান">নিজেই বদলান</h3>
+        <p data-en="New price, new photo, new doctor — from your phone. No developer, no waiting." data-bn="নতুন দাম, নতুন ছবি, নতুন ডাক্তার — ফোন থেকেই। ডেভেলপারের অপেক্ষা নেই।">নতুন দাম, নতুন ছবি, নতুন ডাক্তার — ফোন থেকেই। ডেভেলপারের অপেক্ষা নেই।</p></div>
+      <div class="feat"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5 20 6v6c0 5-3.5 8.3-8 9.5C7.5 20.3 4 17 4 12V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg></div>
+        <h3 data-en="Your data stays yours" data-bn="আপনার ডেটা শুধু আপনার">আপনার ডেটা শুধু আপনার</h3>
+        <p data-en="Only your clinic sees its patients. Download everything to Excel any time — leave whenever you like." data-bn="আপনার রোগীর তথ্য শুধু আপনার ক্লিনিক দেখবে। যেকোনো সময় সব Excel-এ নামিয়ে নিন — চাইলে ছেড়ে যান।">আপনার রোগীর তথ্য শুধু আপনার ক্লিনিক দেখবে। যেকোনো সময় সব Excel-এ নামিয়ে নিন — চাইলে ছেড়ে যান।</p></div>
+    </div>
+
+    <div class="show">
+      <figure class="shot"><div class="frame"><img src="img/price-list.jpg" alt="Price list on a clinic website" width="600" height="1298" loading="lazy"></div>
+        <figcaption><b data-en="Price list" data-bn="দামের তালিকা">দামের তালিকা</b><span data-en="Every price with a Book button." data-bn="প্রতিটি দামের পাশে বুকিং বোতাম।">প্রতিটি দামের পাশে বুকিং বোতাম।</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="img/booking.jpg" alt="Online booking form" width="600" height="1298" loading="lazy"></div>
+        <figcaption><b data-en="Booking form" data-bn="বুকিং ফর্ম">বুকিং ফর্ম</b><span data-en="Name, phone, treatment — done." data-bn="নাম, ফোন, চিকিৎসা — ব্যস।">নাম, ফোন, চিকিৎসা — ব্যস।</span></figcaption></figure>
+      <figure class="shot"><div class="frame"><img src="img/site-hero.jpg" alt="Clinic website home page in English" width="600" height="1077" loading="lazy"></div>
+        <figcaption><b data-en="Home page" data-bn="হোমপেজ">হোমপেজ</b><span data-en="With an &quot;open now&quot; badge that updates itself." data-bn="&quot;এখন খোলা&quot; ব্যাজ নিজে থেকে বদলায়।">"এখন খোলা" ব্যাজ নিজে থেকে বদলায়।</span></figcaption></figure>
+      <figure class="shot span2"><div class="frame wide"><img src="img/dashboard.jpg" alt="Clinic dashboard with sample patient records" width="1400" height="875" loading="lazy"></div>
+        <figcaption><b data-en="Your dashboard" data-bn="আপনার ড্যাশবোর্ড">আপনার ড্যাশবোর্ড</b><span data-en="Sample data shown. Billed, collected and due at a glance." data-bn="নমুনা ডেটা দেখানো হয়েছে। মোট বিল, আদায় আর বাকি — এক নজরে।">নমুনা ডেটা দেখানো হয়েছে। মোট বিল, আদায় আর বাকি — এক নজরে।</span></figcaption></figure>
+      <figure class="shot"><div class="frame wide"><img src="img/editor.jpg" alt="Content editor for prices" width="1400" height="875" loading="lazy"></div>
+        <figcaption><b data-en="Content editor" data-bn="কন্টেন্ট এডিটর">কন্টেন্ট এডিটর</b><span data-en="Change prices and photos yourself." data-bn="দাম আর ছবি নিজেই বদলান।">দাম আর ছবি নিজেই বদলান।</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow" data-en="How it starts" data-bn="কীভাবে শুরু">কীভাবে শুরু</span>
+      <h2 data-en="Live in one or two days" data-bn="১–২ দিনে চালু">১–২ দিনে চালু</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><h3 data-en="Message us on WhatsApp" data-bn="WhatsApp-এ মেসেজ দিন">WhatsApp-এ মেসেজ দিন</h3><p data-en="Send your clinic's name, logo, doctors and treatments — or your Facebook page link." data-bn="ক্লিনিকের নাম, লোগো, ডাক্তার আর চিকিৎসার তালিকা পাঠান — অথবা ফেসবুক পেজের লিংক।">ক্লিনিকের নাম, লোগো, ডাক্তার আর চিকিৎসার তালিকা পাঠান — অথবা ফেসবুক পেজের লিংক।</p></div>
+      <div class="step"><h3 data-en="See your free sample" data-bn="ফ্রি নমুনা দেখুন">ফ্রি নমুনা দেখুন</h3><p data-en="We set up a sample page with your clinic's name. No payment, no commitment." data-bn="আপনার ক্লিনিকের নাম দিয়ে নমুনা পেজ বানিয়ে দেব। কোনো টাকা নেই, কোনো বাধ্যবাধকতা নেই।">আপনার ক্লিনিকের নাম দিয়ে নমুনা পেজ বানিয়ে দেব। কোনো টাকা নেই, কোনো বাধ্যবাধকতা নেই।</p></div>
+      <div class="step"><h3 data-en="Go live" data-bn="চালু করুন">চালু করুন</h3><p data-en="Like it? Pay the first month and start taking bookings the same day." data-bn="পছন্দ হলে প্রথম মাসের ফি দিন — সেদিন থেকেই বুকিং নেওয়া শুরু।">পছন্দ হলে প্রথম মাসের ফি দিন — সেদিন থেকেই বুকিং নেওয়া শুরু।</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" style="padding-top:20px">
+  <div class="wrap">
+    <div class="sec-h">
+      <span class="eyebrow" data-en="Pricing" data-bn="দাম">দাম</span>
+      <h2 data-en="Monthly. No contract." data-bn="মাসিক। কোনো চুক্তি নেই।">মাসিক। কোনো চুক্তি নেই।</h2>
+      <p data-en="Pay 10 months, get 12 on a yearly plan. The first 5 clinics pay half for the first 3 months." data-bn="বার্ষিক নিলে ১০ মাসের টাকায় ১২ মাস। প্রথম ৫টি ক্লিনিক প্রথম ৩ মাস অর্ধেক দামে।">বার্ষিক নিলে ১০ মাসের টাকায় ১২ মাস। প্রথম ৫টি ক্লিনিক প্রথম ৩ মাস অর্ধেক দামে।</p>
+    </div>
+    <div class="plans">
+      <div class="plan">
+        <h3 data-en="Starter" data-bn="স্টার্টার">স্টার্টার</h3>
+        <div class="price">৳1,500 <small data-en="/ month" data-bn="/ মাস">/ মাস</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Website on a ChamberDesk address" data-bn="ChamberDesk ঠিকানায় ওয়েবসাইট">ChamberDesk ঠিকানায় ওয়েবসাইট</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Online booking + alerts" data-bn="অনলাইন বুকিং + অ্যালার্ট">অনলাইন বুকিং + অ্যালার্ট</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Bangla + English" data-bn="বাংলা + ইংরেজি">বাংলা + ইংরেজি</span></li>
+        </ul>
+        <a class="btn btn-g" href="#" data-wa><span data-en="Ask on WhatsApp" data-bn="WhatsApp-এ জানুন">WhatsApp-এ জানুন</span></a>
+      </div>
+      <div class="plan pop" data-badge="সবচেয়ে জনপ্রিয়" data-badge-en="Most clinics" data-badge-bn="সবচেয়ে জনপ্রিয়">
+        <h3 data-en="Clinic" data-bn="ক্লিনিক">ক্লিনিক</h3>
+        <div class="price">৳2,500 <small data-en="/ month" data-bn="/ মাস">/ মাস</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Everything in Starter" data-bn="স্টার্টারের সব">স্টার্টারের সব</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Patient records, payments, dues, reports" data-bn="রোগীর রেকর্ড, পেমেন্ট, বাকি, রিপোর্ট">রোগীর রেকর্ড, পেমেন্ট, বাকি, রিপোর্ট</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Edit prices and photos yourself" data-bn="দাম ও ছবি নিজে বদলানো">দাম ও ছবি নিজে বদলানো</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Your own domain (.com)" data-bn="নিজের ডোমেইন (.com)">নিজের ডোমেইন (.com)</span></li>
+        </ul>
+        <a class="btn btn-p" href="#" data-wa><span data-en="Be one of the first 5" data-bn="প্রথম ৫ জনের একজন হোন">প্রথম ৫ জনের একজন হোন</span></a>
+      </div>
+      <div class="plan">
+        <h3 data-en="Pro" data-bn="প্রো">প্রো</h3>
+        <div class="price">৳4,000 <small data-en="/ month" data-bn="/ মাস">/ মাস</small></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Everything in Clinic" data-bn="ক্লিনিক প্ল্যানের সব">ক্লিনিক প্ল্যানের সব</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="2–3 staff logins" data-bn="২–৩ জন স্টাফের লগইন">২–৩ জন স্টাফের লগইন</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Appointment reminders" data-bn="অ্যাপয়েন্টমেন্ট রিমাইন্ডার">অ্যাপয়েন্টমেন্ট রিমাইন্ডার</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Priority support" data-bn="আগে সাপোর্ট">আগে সাপোর্ট</span></li>
+        </ul>
+        <a class="btn btn-g" href="#" data-wa><span data-en="Ask on WhatsApp" data-bn="WhatsApp-এ জানুন">WhatsApp-এ জানুন</span></a>
+      </div>
+    </div>
+    <p class="note" data-en="One-time setup ৳3,000 (free on a yearly plan). Prefer to own the site outright? We build that too — ask." data-bn="এককালীন সেটআপ ৳৩,০০০ (বার্ষিক নিলে ফ্রি)। সাইট পুরোপুরি নিজের মালিকানায় চান? সেটাও বানাই — জিজ্ঞেস করুন।">এককালীন সেটআপ ৳৩,০০০ (বার্ষিক নিলে ফ্রি)। সাইট পুরোপুরি নিজের মালিকানায় চান? সেটাও বানাই — জিজ্ঞেস করুন।</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="proof">
+      <div>
+        <h2 data-en="Built on a site that's already live" data-bn="চালু থাকা একটি সাইটের ওপর বানানো">চালু থাকা একটি সাইটের ওপর বানানো</h2>
+        <p data-en="ChamberDesk grows out of the website and dashboard we built for a dental clinic in Mirpur. Open it on your phone:" data-bn="মিরপুরের একটি ডেন্টাল ক্লিনিকের জন্য আমাদের বানানো ওয়েবসাইট আর ড্যাশবোর্ড থেকেই ChamberDesk। ফোনে খুলে দেখুন:">মিরপুরের একটি ডেন্টাল ক্লিনিকের জন্য আমাদের বানানো ওয়েবসাইট আর ড্যাশবোর্ড থেকেই ChamberDesk। ফোনে খুলে দেখুন:</p>
+        <p style="margin-top:12px"><a class="link" href="https://omegadentalbd.com" target="_blank" rel="noopener">omegadentalbd.com</a></p>
+      </div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="No server to break: fast on any phone" data-bn="ভাঙার মতো সার্ভার নেই — যেকোনো ফোনে দ্রুত">ভাঙার মতো সার্ভার নেই — যেকোনো ফোনে দ্রুত</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Bookings never lost: saved, emailed and checked again every 5 minutes" data-bn="বুকিং হারায় না — সংরক্ষণ, ইমেইল, আর প্রতি ৫ মিনিটে আবার যাচাই">বুকিং হারায় না — সংরক্ষণ, ইমেইল, আর প্রতি ৫ মিনিটে আবার যাচাই</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5 9-10"/></svg><span data-en="Works in Bangla and English" data-bn="বাংলা আর ইংরেজি দুই ভাষায়">বাংলা আর ইংরেজি দুই ভাষায়</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-h"><span class="eyebrow" data-en="Questions" data-bn="প্রশ্ন">প্রশ্ন</span>
+      <h2 data-en="Before you ask" data-bn="জিজ্ঞেস করার আগে">জিজ্ঞেস করার আগে</h2></div>
+    <div class="faq">
+      <details><summary data-en="Do I need to know computers?" data-bn="কম্পিউটার জানা লাগবে?">কম্পিউটার জানা লাগবে?</summary>
+        <p data-en="No. Everything works from a phone. If you can use WhatsApp, you can use ChamberDesk." data-bn="না। সব ফোন থেকেই চলে। WhatsApp চালাতে পারলে ChamberDesk-ও পারবেন।">না। সব ফোন থেকেই চলে। WhatsApp চালাতে পারলে ChamberDesk-ও পারবেন।</p></details>
+      <details><summary data-en="Is there a contract?" data-bn="চুক্তি আছে?">চুক্তি আছে?</summary>
+        <p data-en="No. Pay monthly and stop whenever you like. Your patient data comes with you as an Excel file." data-bn="না। মাসে মাসে দিন, যখন খুশি বন্ধ করুন। আপনার রোগীর তথ্য Excel ফাইলে সাথে নিয়ে যাবেন।">না। মাসে মাসে দিন, যখন খুশি বন্ধ করুন। আপনার রোগীর তথ্য Excel ফাইলে সাথে নিয়ে যাবেন।</p></details>
+      <details><summary data-en="Can I use my own domain?" data-bn="নিজের ডোমেইন ব্যবহার করা যাবে?">নিজের ডোমেইন ব্যবহার করা যাবে?</summary>
+        <p data-en="Yes, on the Clinic and Pro plans. The domain is registered in your name." data-bn="হ্যাঁ, ক্লিনিক আর প্রো প্ল্যানে। ডোমেইন আপনার নামেই রেজিস্টার হবে।">হ্যাঁ, ক্লিনিক আর প্রো প্ল্যানে। ডোমেইন আপনার নামেই রেজিস্টার হবে।</p></details>
+      <details><summary data-en="Who can see my patients' data?" data-bn="আমার রোগীর তথ্য কে দেখতে পারবে?">আমার রোগীর তথ্য কে দেখতে পারবে?</summary>
+        <p data-en="Only the logins you create for your clinic. Other clinics on ChamberDesk can never see it." data-bn="শুধু আপনার ক্লিনিকের জন্য আপনি যাদের লগইন দেবেন। ChamberDesk-এর অন্য কোনো ক্লিনিক কখনো দেখতে পারবে না।">শুধু আপনার ক্লিনিকের জন্য আপনি যাদের লগইন দেবেন। ChamberDesk-এর অন্য কোনো ক্লিনিক কখনো দেখতে পারবে না।</p></details>
+      <details><summary data-en="How do I pay?" data-bn="টাকা কীভাবে দেব?">টাকা কীভাবে দেব?</summary>
+        <p data-en="bKash or bank transfer, monthly or in advance for 6 or 12 months." data-bn="bKash বা ব্যাংকে — মাসে মাসে, অথবা ৬ বা ১২ মাস অগ্রিম।">bKash বা ব্যাংকে — মাসে মাসে, অথবা ৬ বা ১২ মাস অগ্রিম।</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap">
+    <h2 data-en="See your clinic's site before you pay anything" data-bn="টাকা দেওয়ার আগে নিজের ক্লিনিকের সাইট দেখে নিন">টাকা দেওয়ার আগে নিজের ক্লিনিকের সাইট দেখে নিন</h2>
+    <p data-en="Message us on WhatsApp. We'll send a free sample page with your clinic's name." data-bn="WhatsApp-এ মেসেজ দিন। আপনার ক্লিনিকের নাম দিয়ে ফ্রি নমুনা পেজ পাঠিয়ে দেব।">WhatsApp-এ মেসেজ দিন। আপনার ক্লিনিকের নাম দিয়ে ফ্রি নমুনা পেজ পাঠিয়ে দেব।</p>
+    <div class="cta-row"><a class="btn btn-p" href="#" data-wa><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20.5l1.4-4.6A8 8 0 1 1 21 12z"/></svg><span>WhatsApp: 01632-932249</span></a></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ChamberDesk · <span data-en="by Future Stack Solutions, Dhaka" data-bn="Future Stack Solutions, ঢাকা">Future Stack Solutions, ঢাকা</span></span>
+    <span>WhatsApp: 01632-932249</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+  var WA = "8801632932249";
+  var MSG = { bn: "আসসালামু আলাইকুম। ChamberDesk নিয়ে জানতে চাই। আমার ক্লিনিক: ",
+              en: "Hello! I'd like to know about ChamberDesk. My clinic: " };
+  var lang = "bn";
+  try { var s = localStorage.getItem("cd_lang"); if (s === "en" || s === "bn") lang = s; } catch (e) {}
+
+  function apply(l) {
+    lang = l;
+    document.documentElement.lang = l;
+    document.documentElement.setAttribute("data-lang", l);
+    document.querySelectorAll("[data-en][data-bn]").forEach(function (el) {
+      var v = el.getAttribute("data-" + l);
+      if (el.hasAttribute("data-html")) el.innerHTML = v; else el.textContent = v;
+    });
+    document.querySelectorAll("[data-badge-en]").forEach(function (el) {
+      el.setAttribute("data-badge", el.getAttribute("data-badge-" + l));
+    });
+    var shot = document.getElementById("heroShot");
+    if (shot) shot.src = l === "en" ? "img/site-hero.jpg" : "img/site-hero-bn.jpg";
+    document.getElementById("langBtn").textContent = l === "en" ? "বাংলা" : "EN";
+    var href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(MSG[l]);
+    document.querySelectorAll("[data-wa]").forEach(function (a) { a.href = href; a.target = "_blank"; a.rel = "noopener"; });
+  }
+  document.getElementById("langBtn").addEventListener("click", function () {
+    var n = lang === "en" ? "bn" : "en";
+    try { localStorage.setItem("cd_lang", n); } catch (e) {}
+    apply(n);
+  });
+  apply(lang);
+})();
+</script>
+</body>
+</html>
